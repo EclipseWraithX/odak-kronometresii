@@ -1,0 +1,12 @@
+{
+  "name": "Odak Kronometresi",
+  "short_name": "Odak",
+  "description": "Çalışma süreni ölç, kaydet ve cihazların arasında senkronize et.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fbfcf8",
+  "theme_color": "#153c32",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
