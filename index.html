@@ -23,7 +23,7 @@ const K='odak-kronometresi-pc-v2',DB='https://odak-kronometresi-default-rtdb.eur
 let x={sessions:{},goals:{},notes:{},running:false,startedAt:null,currentSeconds:0};try{x={...x,...JSON.parse(localStorage.getItem(K)||'{}')}}catch(e){}x.goals=x.goals||{};x.notes=x.notes||{};
 let syncCode=localStorage.getItem('odak-sync-code')||'',syncBusy=false,cloudStream=null;
 if(!Object.keys(x.sessions).length){try{const old=JSON.parse(localStorage.getItem('odak-kronometresi-pc-v1')||'{}');Object.entries(old.days||{}).forEach(([day,seconds])=>{if(seconds>0)x.sessions[day]=[{id:'eski-'+day,seconds,time:'Önceki kayıt'}]})}catch(e){}}
-const key=()=>{const d=new Date();if(d.getHours()<2)d.setDate(d.getDate()-1);return d.toLocaleDateString('sv-SE')};
+const key=()=>new Date().toLocaleDateString('sv-SE');
 const elapsed=()=>Math.max(0,(x.currentSeconds||0)+(x.running&&x.startedAt?Math.floor((Date.now()-x.startedAt)/1000):0));
 const fmt=s=>[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(v=>String(v).padStart(2,'0')).join(':');
 const short=s=>{let h=Math.floor(s/3600),m=Math.floor(s%3600/60),n=s%60;return h?`${h} sa ${m} dk`:m?`${m} dk ${n} sn`:`${n} sn`};
